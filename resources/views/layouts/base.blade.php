@@ -35,7 +35,7 @@
 					<div class="container">
 						<div class="topbar-menu left-menu">
 							<ul>
-								<li class="menu-item" >
+								<li class="menu-item">
 									<a title="Hotline: (+123) 456 789" href="#" ><span class="icon label-before fa fa-mobile"></span>Hotline: (+123) 456 789</a>
 								</li>
 							</ul>
@@ -70,10 +70,16 @@
 										@if(Auth::user()->utype === 'ADM')
 											<li class="menu-item menu-item-has-children parent" >
 												<a title="My Account" href="#">My Account ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
-												<ul class="submenu curency" >
-													<li class="menu-item" >
-														<a title="Dashboard" href="#">Dashboard</a>
+												<ul class="submenu curency">
+													<li class="menu-item">
+														<a title="Dashboard" href="{{ route('admin.dashboard')}}">Dashboard</a>
 													</li>
+													<li class="menu-item">
+														<a href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
+													</li>
+													<form id="logout-form" method="post" action="{{ route('logout') }}">
+														@csrf
+													</form>
 												</ul>
 											</li>    
 										@else
@@ -81,8 +87,14 @@
 												<a title="My Account" href="#">My Account ({{Auth::user()->name}})<i class="fa fa-angle-down" aria-hidden="true"></i></a>
 												<ul class="submenu curency" >
 													<li class="menu-item" >
-														<a title="Dashboard" href="#">Dashboard</a>
+														<a title="Dashboard" href="{{ route('user.dashboard')}}">Dashboard</a>
 													</li>
+													<li class="menu-item">
+														<a href="{{ route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit()">Logout</a>
+													</li>
+													<form id="logout-form" method="post" action="{{ route('logout') }}">
+														@csrf
+													</form>
 												</ul>
 											</li>
 										@endif
