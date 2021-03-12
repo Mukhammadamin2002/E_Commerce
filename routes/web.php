@@ -29,11 +29,11 @@ Route::get('/',HomeComponent::class);
 
 Route::get('/shop',ShopComponent::class);
 
-Route::get('/cart',CartComponent::class);
+Route::get('/cart',CartComponent::class)->name('product.cart');
 
 Route::get('/checkout',CheckoutComponent::class);
 
-Route::get('product/{slug}',DetailsComponent::class)->name('product_details');
+Route::get('product/{slug}',DetailsComponent::class)->name('product.details');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');

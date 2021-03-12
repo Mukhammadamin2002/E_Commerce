@@ -53,7 +53,7 @@
 								</div>
 							</div>
 							<div class="wrap-butons">
-								<a href="#" class="btn add-to-cart">Add to Cart</a>
+								<a href="" class="btn add-to-cart" wire:click.prevent="store({{$product->id}},'{{$product->name}}',{{$product->regular_price}})">Add to Cart</a>
            <div class="wrap-btn">
                <a href="#" class="btn btn-compare">Add Compare</a>
                <a href="#" class="btn btn-wishlist">Add Wishlist</a>
@@ -215,12 +215,12 @@
 								<li class="product-item">
 									<div class="product product-widget-style">
 										<div class="thumbnnail">
-											<a href="{{route('product_details',['slug'=>$p_product->slug])}}" title="{{$p_product->name}}">
+											<a href="{{route('product.details',['slug'=>$p_product->slug])}}" title="{{$p_product->name}}">
 												<figure><img src="{{ asset('assets/images/products') }}/{{$p_product->image}}" alt="{{$p_product->name}}"></figure>
 											</a>
 										</div>
 										<div class="product-info">
-											<a href="{{route('product_details',['slug'=>$p_product->slug])}}" title="{{$p_product->name}}" class="product-name"><span>{{$p_product->name}}</span></a>
+											<a href="{{route('product.details',['slug'=>$p_product->slug])}}" title="{{$p_product->name}}" class="product-name"><span>{{$p_product->name}}</span></a>
 											<div class="wrap-price"><span class="product-price">${{$p_product->regular_price}}</span></div>
 										</div>
 									</div>
@@ -241,7 +241,7 @@
 								@foreach ($related_products as $r_product)
 								<div class="product product-style-2 equal-elem ">
 									<div class="product-thumnail">
-										<a href="{{route('product_details',['slug'=>$r_product->slug])}}" title="{{$r_product->name}}">
+										<a href="{{route('product.details',['slug'=>$r_product->slug])}}" title="{{$r_product->name}}">
 											<figure><img src="{{ asset('assets/images/products') }}/{{$r_product->image}}" width="214" height="214" alt="{{$r_product->name}}"></figure>
 										</a>
 										<div class="group-flash">
@@ -252,7 +252,7 @@
 										</div>
 									</div>
 									<div class="product-info">
-										<a href="{{route('product_details',['slug'=>$r_product->slug])}}" class="product-name"><span>{{$r_product->name}}</span></a>
+										<a href="{{route('product.details',['slug'=>$r_product->slug])}}" class="product-name"><span>{{$r_product->name}}</span></a>
 										<div class="wrap-price"><span class="product-price">${{$r_product->regular_price}}</span></div>
 									</div>
 								</div>
