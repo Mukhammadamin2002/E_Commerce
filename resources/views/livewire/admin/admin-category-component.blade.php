@@ -22,7 +22,7 @@
          </div>
     				</div>
     				<div class="panel-body">
-    					<table class="table table-bordered table-hover">
+    					<table class="table table-bordered table-stripped">
     						<thead>
     							<tr>
     								<th>Id</th>
