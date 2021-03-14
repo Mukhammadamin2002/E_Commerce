@@ -54,6 +54,8 @@
 
 					</div><!--end wrap shop control-->
 
+					@if($products->count()>0)
+
 					<div class="row">
 
 						<ul class="product-list grid-products equal-container">
@@ -75,10 +77,12 @@
 							@endforeach
 						</ul>
 					</div>
+					@else
+						<h3 style="padding-top:30px">There is No Product Matched</h3>
 
 					<div class="wrap-pagination-info">
 						{{$products->links()}}
-					
+					@endif
 					</div>
 				</div><!--end main products area-->
 
