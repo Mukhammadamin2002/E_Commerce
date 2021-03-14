@@ -12,14 +12,14 @@
     		<div class="col-md-12">
     			<div class="panel panel-default">
     				<div class="panel-heading">
-                        <div class="row">
-                            <div class="col-md-6">
-                                All Categories
-                            </div>
-                            <div class="col-md-6">
-                                <a href="{{route('admin.addcategory')}}" class="btn btn-warning pull-right">Add New Category</a>
-                            </div>
-                        </div>
+         <div class="row">
+             <div class="col-md-6">
+                 All Categories
+             </div>
+             <div class="col-md-6">
+                 <a href="{{route('admin.addcategory')}}" class="btn btn-warning pull-right">Add New Category</a>
+             </div>
+         </div>
     				</div>
     				<div class="panel-body">
     					<table class="table table-bordered table-hover">
@@ -37,7 +37,9 @@
     								<td>{{$category->id}}</td>
     								<td>{{$category->name}}</td>
     								<td>{{$category->slug}}</td>
-    								<td></td>
+    								<td>
+             <a href="{{route('admin.editcategory',['category_slug'=>$category->slug])}}"><i class="fa fa-edit fa-2x"></i></a>
+            </td>
     							</tr>
     							@endforeach
     						</tbody>
