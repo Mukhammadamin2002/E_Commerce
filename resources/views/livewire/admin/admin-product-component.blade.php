@@ -22,6 +22,9 @@
             </div>
     			</div>
     			<div class="panel-body">
+            @if(Session::has('message'))
+              <div class="alert alert-danger" role="alert">{{Session::get('message')}}</div>
+            @endif
     				<table class="table table-striped table-hover">
     					<thead>
     						<tr>
@@ -37,16 +40,19 @@
     					</thead>
     					<tbody>
     						@foreach ($products as $product)
-                               <tr>
-                               	<td>{{$product->id}}</td>
-                               	<td><img src="{{asset('assets/images/products')}}/{{$product->image}}" width="60" alt="" /></td>
-                               	<td>{{$product->name}}</td>
-                               	<td>{{$product->stock_status}}</td>
-                               	<td>{{$product->regular_price}}</td>
-                               	<td>{{$product->category->name}}</td>
-                               	<td>{{$product->created_at}}</td>
-                               	<td></td>
-                               </tr>
+                 <tr>
+                 	<td>{{$product->id}}</td>
+                 	<td><img src="{{asset('assets/images/products')}}/{{$product->image}}" width="60" alt="" /></td>
+                 	<td>{{$product->name}}</td>
+                 	<td>{{$product->stock_status}}</td>
+                 	<td>{{$product->regular_price}}</td>
+                 	<td>{{$product->category->name}}</td>
+                 	<td>{{$product->created_at}}</td>
+                 	<td>
+                    <a href="{{route('admin.editproduct',['product_slug'=>$product->slug])}}"><i class="fa fa-edit fa-2x text-info"></i></a>
+                    <a href="" style="margin-left: 10px" wire:click.prevent="deleteProduct({{$product->id}})"><i class="fa fa-trash fa-2x text-danger"></i></a>
+                  </td>
+                 </tr>
     						@endforeach
     					</tbody>
     				</table>
