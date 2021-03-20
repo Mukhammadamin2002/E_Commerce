@@ -48,7 +48,8 @@ class AdminAddProductComponent extends Component
 			'SKU' => 'required',
 			'stock_status' => 'required',
 			'quantity' => 'required|numeric',
-			'image' => 'required|mimes:jpeg,jpg,png'
+			'image' => 'required|mimes:jpeg,jpg,png',
+			'category_id' => 'required'
 		]);
 	}
 
@@ -64,7 +65,8 @@ class AdminAddProductComponent extends Component
 			'SKU' => 'required',
 			'stock_status' => 'required',
 			'quantity' => 'required|numeric',
-			'image' => 'required|mimes:jpeg,jpg,png'
+			'image' => 'required|mimes:jpeg,jpg,png',
+			'category_id' => 'required'
 		]);
 		$product = new Product();
 		$product->name = $this->name;
