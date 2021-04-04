@@ -6,7 +6,7 @@
     				<div class="panel-heading">
     					<div class="row">
     						<div class="col-md-6">
-    							<b>Add New Slide</b>
+    							<h4><b>Add New Slide</b></h4>
     						</div>
     						<div class="col-md-6">
     							<a href="{{route('admin.homeslider')}}" class="btn btn-success pull-right">All Slides</a>

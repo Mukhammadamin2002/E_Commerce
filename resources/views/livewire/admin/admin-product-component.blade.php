@@ -14,10 +14,10 @@
     			.panel-heading">
     				<div class="row">
               <div class="col-md-6">
-                All Products
+                <h4><b>All Products</b></h4>
               </div>
               <div class="col-md-6">
-                <a href="{{route('admin.addproduct')}}" class="btn btn-success pull-right">Add New Products</a>
+                <a href="{{route('admin.addproduct')}}" class="btn btn-success pull-right">Add New</a>
               </div>    
             </div>
     			</div>

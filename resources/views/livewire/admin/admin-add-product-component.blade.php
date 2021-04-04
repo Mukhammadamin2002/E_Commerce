@@ -6,11 +6,11 @@
     				<div class="panel-heading">
     					<div class="row">
     						<div class="col-md-6">
-    							Add New Product
+    							<h4><b>Add New Product</b></h4>
     						</div>
     						<div class="col-md-6">
     							<a href="{{route('admin.products')}}" class="btn btn-success pull-right">
-    								 All Products
+    								All Products
     							</a>
     						</div>
     					</div>
