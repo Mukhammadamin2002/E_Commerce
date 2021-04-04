@@ -20,7 +20,7 @@ class DetailsComponent extends Component
 
     public function store($product_id, $product_name, $product_price)
     {
-        Cart::add($product_id, $product_name, $this->qty, $product_price)->associate('App\Models\Product');
+        Cart::instance('cart')->add($product_id, $product_name, $this->qty, $product_price)->associate('App\Models\Product');
         session()->flash('success_message', 'Item Added Successfully');
         return redirect()->route('product.cart');
     }
@@ -36,7 +36,6 @@ class DetailsComponent extends Component
             $this->qty--;
         }
     }
-
     public function render()
     {
         $product = Product::where('slug', $this->slug)->first();
