@@ -15,7 +15,7 @@
                     </div>
                     <div class="panel-body">
             @if(Session::has('message'))
-                <div class="alert alert-danger" role="alert">{{Session::get('message')}}</div>
+                <div class="alert alert-success" role="alert">{{Session::get('message')}}</div>
             @endif
                         <table class="table table-bordered table-stripped table-hover">
                             <thead>
