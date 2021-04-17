@@ -55,18 +55,29 @@
 				<div class="order-summary">
 					<h4 class="title-box">Order Summary</h4>
 					<p class="summary-info"><span class="title">Subtotal</span><b class="index">${{Cart::instance('cart')->subtotal()}}</b></p>
-					<p class="summary-info"><span class="title">Tax</span><b class="index">${{Cart::instance('cart')->tax()}}</b></p>
-					<p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b></p>
-					<p class="summary-info total-info "><span class="title">Total</span><b class="index">${{Cart::instance('cart')->total()}}</b></p>
+					@if(Session::has('coupon'))
+						<p class="summary-info"><span class="title">Discount ({{ Session::get('coupon')['code'] }}) <a href="#" wire:click.prevent="removeCoupon"><i class="fa fas-trash text-danger"></i></a></span><b class="index">- ${{ number_format($discount,2) }}</b></p>
+						<p class="summary-info"><span class="title">Subtotal with Discount</span><b class="index">${{ number_format($subtotalAfterDiscount,2) }}</b></p>
+						<p class="summary-info"><span class="title">Tax ({{ config('cart.tax') }}%)</span><b class="index">${{ number_format($taxAfterDiscount,2) }}</b></p>
+						<p class="summary-info"><span class="title">Total: </span><b class="index">${{ number_format($totalAfterDiscount,2) }}</b></p>
+						@else
+						<p class="summary-info"><span class="title">Tax</span><b class="index">${{Cart::instance('cart')->tax()}}</b></p>
+						<p class="summary-info"><span class="title">Shipping</span><b class="index">Free Shipping</b></p>
+						<p class="summary-info total-info "><span class="title">Total</span><b class="index">${{Cart::instance('cart')->total()}}</b></p>
+					@endif
 				</div>
 				<div class="checkout-info">
 					<label class="checkbox-field">
-						<input class="frm-input " name="have-code" id="have-code" value="1" type="checkbox" wire:model="haveCouponCode"><span>I have promo code</span>
+						@if(!Session::has('coupon'))
+						<input class="frm-input " name="have-code" id="have-code" value="1" type="checkbox" wire:model="haveCouponCode"><span>I have coupon code</span>
 					</label>
 					@if($haveCouponCode == 1)
 						<div class="summary-item">
-							<form action="">
+							<form wire:submit.prevent="applyCouponCode">
 								<h4 class="title-box">Coupon Codes</h4>
+								@if(Session::has('coupon_message'))
+									<div class="alert alert-danger" role="danger">{{ Session::get('coupon_message') }}</div>
+								@endif
 								<p class="row-in-form">
 									<label for="coupon-code">Enter your Coupon Code:</label>
 									<input type="text" placeholder="Enter coupon code ..." name="coupon-code" wire:model="couponCode"/>
@@ -75,6 +86,7 @@
 							</form>
 						</div>
 					@endif
+				@endif
 					<a class="btn btn-checkout" href="checkout.html">Check out</a>
 					<a class="link-to-shop" href="shop.html">Continue Shopping<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
 				</div>
@@ -90,7 +102,7 @@
 					{{ Str::plural('item', Cart::instance('saveForLater')->count()) }} Saved For Later</h3>
 				@if(Session::has('s_success_message'))
 					<div class="alert alert-warning">
-						<strong>{{Session::get('s_success_message')}}  </strong>
+						<strong>{{Session::get('s_success_message')}}</strong>
 					</div>
 				@endif
 				@if(Cart::instance('saveForLater')->count() > 0)
